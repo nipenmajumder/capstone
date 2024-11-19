@@ -33,7 +33,7 @@ class GetDustbins extends Command
 
         try {
             $reference = $database->getReference('dustbins');
-//            $snapshot = $reference->getSnapshot();
+            //            $snapshot = $reference->getSnapshot();
             // Get the value of the snapshot
             $query = $reference->orderByKey()->limitToLast(5);
 

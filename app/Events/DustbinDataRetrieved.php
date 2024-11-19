@@ -4,8 +4,6 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -18,8 +16,8 @@ class DustbinDataRetrieved implements ShouldBroadCast
     /**
      * Create a new event instance.
      */
-
     public $data;
+
     public function __construct($data)
     {
         $this->data = $data;
@@ -33,6 +31,7 @@ class DustbinDataRetrieved implements ShouldBroadCast
     public function broadcastOn(): array
     {
         Log::info('Broadcasting data....');
+
         return [
             new Channel('dustbin-updates'),
         ];

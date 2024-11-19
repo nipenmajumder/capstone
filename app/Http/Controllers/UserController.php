@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -11,7 +12,12 @@ class UserController extends Controller
      */
     public function index()
     {
+        $users = User::query()
+            ->with(['roles:id,name'])
+            ->latest()
+            ->paginate(10);
 
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -19,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -43,7 +49,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('user.edit');
     }
 
     /**
