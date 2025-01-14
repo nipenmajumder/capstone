@@ -44,6 +44,7 @@ class GetDustbins extends Command
             DustbinDataRetrieved::dispatch($value);
             // Dump the value
         } catch (DatabaseException $e) {
+            Log::error('Error getting data from Firebase', ['error' => $e->getMessage()]);
             echo $e->getMessage();
         }
     }
